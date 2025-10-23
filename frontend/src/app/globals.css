@@ -1,0 +1,87 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@keyframes stretchAnimation {
+  0%,
+  100% {
+    transform: scaleY(0.01); /* Start from a shrunk state */
+  }
+  50% {
+    transform: scaleY(1); /* Stretch to full height */
+  }
+}
+
+@media (max-width: 1023px) {
+  .plan-container {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .plan-card {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+}
+
+
+/* From Public Directory */
+@font-face {
+  font-family: 'Kurale';
+  src: url('/fonts/Kurale.ttf');
+  font-style: medium;
+  font-weight: normal;
+  font-display: swap;
+}
+
+.line-animation {
+  animation: stretchAnimation 1.5s ease-in-out infinite;
+  transform-origin: center; /* Set the transform origin to the center */
+}
+
+.shimmerEffect {
+  @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent before:via-skeletonShimmer/60 dark:before:via-skeletonShimmerDark/50 before:animate-[shimmer_1.5s_infinite];
+}
+.swiper {
+  overflow: visible !important;
+}
+/**/
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated.faster {
+  -webkit-animation-duration: 500ms;
+  animation-duration: 500ms;
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

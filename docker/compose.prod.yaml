@@ -1,0 +1,33 @@
+services:
+  postgres_db_prod:
+    image: postgres:16.4-alpine3.20
+    restart: always
+    env_file:
+      - ../envs/postgres.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  talktune_backend:
+    build:
+      context: ../backend/
+      dockerfile: prod.Dockerfile
+    ports:
+      - 5000:5000
+    env_file:
+      - ../envs/backend.env
+    depends_on:
+      - postgres_db_prod
+  talktune_frontend:
+    build:
+      context: ../frontend/
+      dockerfile: prod.Dockerfile
+    ports:
+      - 3000:3000
+    env_file:
+      - ../envs/frontend.env
+    depends_on:
+      - talktune_backend
+
+volumes:
+  postgres_data:

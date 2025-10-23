@@ -1,0 +1,362 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Activity {
+  """Unique identifier for the activity"""
+  activityId: ID!
+
+  """End time of the activity"""
+  endTime: DateTime
+
+  """Interview template ID"""
+  interviewTemplateId: String!
+
+  """Indicates if the activity is cancelled"""
+  isCancelled: Boolean!
+
+  """Start time of the activity"""
+  startTime: DateTime!
+
+  """Number of tokens used"""
+  tokens: Int!
+}
+
+input CreateActivityInput {
+  """interviewText"""
+  interviewText: String!
+
+  """startTime"""
+  startTime: String!
+
+  """timeLimit"""
+  timeLimit: String!
+}
+
+input CreateDynamicPromptInput {
+  """Prompt objects"""
+  prompt: [CreateDynamicPromptObjectInput!]!
+
+  """Name of the prompt"""
+  promptName: String!
+}
+
+input CreateDynamicPromptObjectInput {
+  """Optional ID for the dynamic prompt object"""
+  id: ID
+
+  """Indicates if quiz is limited"""
+  isQuizLimited: Boolean!
+
+  """Indicates if time is limited"""
+  isTimeLimited: Boolean!
+
+  """Number of quizzes"""
+  noOfQuiz: Float
+
+  """Preparation time"""
+  preparationTime: Float
+
+  """Prompt template"""
+  promptTemplate: String
+
+  """Quiz time"""
+  quizTime: Float
+
+  """Stage number"""
+  stageNumber: Float
+
+  """Validation template"""
+  validationTemplate: String
+}
+
+input CreateInterviewInput {
+  """Interview category"""
+  category: String!
+
+  """Description for the interview"""
+  description: String!
+
+  """Dynamic template ID"""
+  dynamicTemplateId: String!
+
+  """Image URL"""
+  imageUrl: String!
+
+  """Label name for the interview"""
+  interviewLabel: String!
+
+  """Stages of the interview"""
+  interviewStages: [InterviewStageInput!]
+
+  """Role name for the interview"""
+  interviewText: String!
+
+  """Introduction"""
+  introduction: [String!]!
+
+  """Is Interim Enabled"""
+  isInterimEnabled: Boolean!
+
+  """Indicates if the interview is time-limited"""
+  isTimeLimited: Boolean!
+
+  """Preferences for the interview"""
+  preferences: [PreferencesInput!]
+
+  """Tag content"""
+  tagContents: [String!]!
+
+  """Time limit for the interview"""
+  timeLimit: Int!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type DynamicPrompt {
+  """Unique identifier for the dynamic prompt"""
+  id: ID!
+
+  """Prompt object"""
+  prompt: [DynamicPromptObject!]!
+
+  """Name of the prompt"""
+  promptName: String!
+}
+
+type DynamicPromptObject {
+  """Associated dynamic prompt"""
+  dynamicPrompt: DynamicPrompt!
+
+  """Unique identifier for the dynamic prompt object"""
+  id: ID!
+
+  """Indicates if quiz is limited"""
+  isQuizLimited: Boolean!
+
+  """Indicates if time is limited"""
+  isTimeLimited: Boolean!
+
+  """Number of quizzes"""
+  noOfQuiz: Int!
+
+  """Preparation time"""
+  preparationTime: Int
+
+  """Prompt template"""
+  promptTemplate: String
+
+  """Quiz time"""
+  quizTime: Int
+
+  """Stage number"""
+  stageNumber: Int
+
+  """Validation template"""
+  validationTemplate: String
+}
+
+input GenerateDynamicPromptInput {
+  """preferencesSchema"""
+  preferencesSchema: String!
+
+  """prompt_id"""
+  promptId: String!
+}
+
+type Interview {
+  """Interview category"""
+  category: String!
+
+  """Description for the interview"""
+  description: String!
+
+  """Dynamic template ID"""
+  dynamicTemplateId: String!
+
+  """Image URL"""
+  imageUrl: String!
+
+  """Unique identifier for the interview template"""
+  interviewId: ID!
+
+  """Label name for the interview"""
+  interviewLabel: String!
+
+  """Stages of the interview"""
+  interviewStages: [InterviewStage!]
+
+  """Role name for the interview"""
+  interviewText: String!
+
+  """Introduction"""
+  introduction: [String!]!
+
+  """Is Interim Enabled"""
+  isInterimEnabled: Boolean!
+
+  """Indicates if the interview is time-limited"""
+  isTimeLimited: Boolean!
+
+  """Preferences for the interview"""
+  preferences: [Preferences!]!
+
+  """Tag contents"""
+  tagContents: [String!]
+
+  """Time limit for the interview"""
+  timeLimit: Int!
+}
+
+type InterviewStage {
+  """Associated interview template"""
+  interviewTemplate: Interview
+
+  """Indicates if the stage is in order"""
+  isStageInOrder: Boolean!
+
+  """Number of questions in the stage"""
+  numberOfQuestions: Int!
+
+  """Interview stage"""
+  stage: String!
+
+  """Unique identifier for the interview stage"""
+  stageId: ID!
+
+  """Stage number"""
+  stageNumber: Int!
+}
+
+input InterviewStageInput {
+  """Interview template ID"""
+  interviewTemplateId: String
+
+  """Indicates if the stage is in order"""
+  isStageInOrder: Boolean!
+
+  """Number of questions in the stage"""
+  numberOfQuestions: Int!
+
+  """Stage name"""
+  stage: String!
+
+  """Stage number of the interview"""
+  stageNumber: Int!
+}
+
+type Mutation {
+  create(createActivityInput: CreateActivityInput!): Activity!
+  createDynamicPrompt(createDynamicPromptInput: CreateDynamicPromptInput!): DynamicPrompt!
+  createInterview(createInterviewInput: CreateInterviewInput!): Interview!
+  deleteInterviewById(id: String!): Interview!
+  generateDynamicPrompt(generateDynamicPromptInput: GenerateDynamicPromptInput!): DynamicPrompt!
+  textToSpeech(text: String!): String!
+}
+
+type Preferences {
+  """addNewOption"""
+  addNewOption: Boolean
+
+  """default options"""
+  defaultValue: [String!]
+
+  """indexNo"""
+  indexNo: Int
+
+  """Associated interview"""
+  interview: Interview!
+
+  """label"""
+  label: String
+
+  """name"""
+  name: String
+
+  """options"""
+  options: [String!]
+
+  """Place Holder"""
+  placeHolder: String
+
+  """Unique identifier for the preference"""
+  preferenceId: ID!
+
+  """removeOption"""
+  removeOption: Boolean
+
+  """type"""
+  type: String
+
+  """Validation for the preference"""
+  validation: [Validation!]!
+}
+
+input PreferencesInput {
+  """Add new option"""
+  addNewOption: Boolean
+
+  """Default value"""
+  defaultValue: [String!]!
+
+  """Index number"""
+  indexNo: Int
+
+  """Label"""
+  label: String!
+
+  """Preference name"""
+  name: String!
+
+  """Options"""
+  options: [String!]
+
+  """placeHolder"""
+  placeHolder: String
+
+  """Remove option"""
+  removeOption: Boolean
+
+  """Preference type"""
+  type: String!
+
+  """Validation for the preference"""
+  validation: ValidationInput
+}
+
+type Query {
+  getAllInterviews: [Interview!]!
+  getInterviewById(id: String!): Interview!
+  hello: String!
+}
+
+type Validation {
+  """max"""
+  max: Int
+
+  """min"""
+  min: Int
+
+  """Associated preference"""
+  preferences: Preferences!
+
+  """required"""
+  required: Boolean
+
+  """Unique identifier for the validation"""
+  validationId: ID!
+}
+
+input ValidationInput {
+  """Maximum value"""
+  max: Int
+
+  """Minimum value"""
+  min: Int
+
+  """Required"""
+  required: Boolean!
+}

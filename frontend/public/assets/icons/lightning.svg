@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>eloque/ elements/ icons/ lightning </title>
+    <defs>
+        <polygon id="path-1" points="0 14.012775 3.6126453 14.012775 2.29413859 24 12.129 9.40809084 8.78194864 9.40809084 10.2228431 0"></polygon>
+    </defs>
+    <g id="UI-designs-1.1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="13.-home" transform="translate(-1295, -21)">
+            <g id="Group-4" transform="translate(1289, 15)">
+                <g id="eloque/-elements/-icons/-lightning-" transform="translate(6, 6)">
+                    <g id="eloque/-variables/-colors/-black" transform="translate(6, 0)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+                        <g mask="url(#mask-2)" fill="#F4530F" id="eloque/-variables/-colors/-white">
+                            <g transform="translate(-6, 0)">
+                                <rect x="0" y="0" width="200" height="24"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
